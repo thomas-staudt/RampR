@@ -1,0 +1,9 @@
+bin
+build
+lib
+*ipynb*
+*.pyc
+*.so
+*.a
+*.o
+*.out
