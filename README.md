@@ -33,12 +33,16 @@ value corresponds to the radius of one particle. The second ingredient
 needed to construct a `Simulation` is a value for the parameter `k`, which
 determines the strength of the volume growth.
 ```python
+# Load numpy and the Simulation class
+import numpy as np
+from pyrampr import Simulation
+
 # Create an initial distribution of radii
-# In this case, the 1000 radii are uniformly distributed between 1 and 3
-radii = np.linspace(1, 3, 1000)
+# In this case, the 1000 radii are uniformly distributed between 0.5 and 3
+radii = np.linspace(0.5, 3, 1000)
 
 # Create a simulation object with growth parameter 3.5
-sim = Simulation(radii, 3.5)
+sim = Simulation(radii, 2.5)
 ```
 This simulation can now be evolved in time, until either a certain
 time, particle number, or volume is reached.
@@ -47,7 +51,10 @@ time, particle number, or volume is reached.
 sim.evolve_rkck()
 
 # Evolve until the intern time is 2.5
+# The return value denotes the number of droplets that 
+# evaporated during this evolution step
 sim.evolve_rkck(until_time=2.5)
+
 ```
 
 A number of properties of the simulation can be obtained as member
